@@ -1,0 +1,249 @@
+/*==============================
+  Import Global Variables
+==============================*/
+@import "../variables.css";
+
+/*==============================
+  General Layout
+==============================*/
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--clr-lightGrayishBlue);
+}
+
+.card {
+  display: flex;
+  max-width: 50rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/*==============================
+  Image Section
+==============================*/
+.imageContainer {
+  width: 40%;
+  background: url("../images/drawers.jpg") left/cover no-repeat;
+  border-radius: 10px;
+}
+
+/*==============================
+  Content Section
+==============================*/
+.content {
+  padding: 40px;
+  flex: 1;
+  font-family: var(--ff-base);
+  color: var(--clr-veryDarkGrayishBlue);
+}
+
+/*==============================
+  Typography
+==============================*/
+h2 {
+  color: var(--clr-veryDarkGrayishBlue);
+  font-size: 20px;
+  font-weight: var(--fw-bold);
+}
+
+p {
+  color: var(--clr-grayishBlue);
+  font-size: var(--font-paragraph);
+  font-weight: var(--fw-bold);
+}
+
+h3 {
+  color: var(--clr-veryDarkGrayishBlue);
+  font-size: 16px;
+  font-weight: var(--fw-bold);
+  margin-bottom: 3px;
+}
+
+.date {
+  color: var(--clr-grayishBlue);
+  font-size: var(--font-paragraph);
+  font-weight: var(--fw-bold);
+  margin-bottom: 10px;
+}
+
+/*==============================
+  Footer & Profile
+==============================*/
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+/*==============================
+  Share Button & Popup
+==============================*/
+.shareContainer {
+  position: relative; /* Needed for absolute popup positioning */
+  display: inline-block;
+}
+
+.shareButton {
+  background: var(--clr-desaturatedDarkBlue);
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  z-index: 1001;
+}
+
+.shareButton img {
+  filter: brightness(0) invert(1); /* Makes icon white */
+}
+
+/* Popup container styling */
+.sharePopup {
+  position: absolute;
+  bottom: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--ff-base);
+  background: var(--clr-veryDarkGrayishBlue);
+  color: white;
+  padding: 20px 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: opacity 0.3s ease-in-out;
+  width: max-content;
+}
+
+.sharePopup span {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--clr-desaturatedDarkBlue);
+}
+
+/* Hover effect for share icons */
+.sharePopup img {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.sharePopup img:hover {
+  transform: scale(1.5);
+  filter: brightness(1.0);
+}
+
+/* Arrow below the share popup */
+.shareArrow {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 16px solid var(--clr-veryDarkGrayishBlue);
+}
+
+/*==============================
+  Responsive Design (Mobile)
+==============================*/
+@media (max-width: 375px) {
+
+  /* Prevent clipping or cutoff of elements */
+  .cardWrapper, .card, .content, .footer {
+    overflow: visible;
+  }
+
+  .cardWrapper {
+    padding: 10px;
+    position: relative;
+  }
+
+  .card {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .footer {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .shareContainer {
+    position: static; /* Prevent conflict with popup */
+  }
+
+  /* Mobile popup styling */
+  .sharePopup {
+    position: fixed;
+    left: 11.4rem;
+    right: 0;
+    bottom: 0;
+    width: 95%;
+    margin: 0;
+    padding: 16px 0;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: none;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+
+  .shareButton::after {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: -1rem;
+    bottom: -4rem;
+  }
+
+  /* Fade in animation for popup */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Overlay when share is active */
+  .cardWrapper::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: none;
+  }
+
+  .cardWrapper.shareActive::after {
+    display: block;
+  }
+}

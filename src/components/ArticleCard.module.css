@@ -1,0 +1,92 @@
+/* Import shared CSS variables */
+@import url('./variables.css');
+
+/* Main card container */
+.card {
+  display: flex;
+  max-width: 600px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative; /* For positioning the share popup */
+}
+
+/* Left-side image */
+.image {
+  width: 40%;
+}
+
+/* Right-side content container */
+.content {
+  padding: 20px;
+  width: 60%;
+}
+
+/* Article title */
+h2 {
+  font-size: 1.2rem;
+  color: #48556a;
+}
+
+/* Article description */
+p {
+  color: #6e8098;
+  font-size: 0.9rem;
+}
+
+/* Footer area holding profile and share button */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  position: relative; /* Needed for the popup to be positioned correctly */
+}
+
+/* Profile container */
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+/* Author avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Share button styling */
+.shareButton {
+  background: #ecf2f8;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Share popup container */
+.sharePopup {
+  position: absolute;
+  bottom: 50px;
+  right: 0;
+  background: #48556a;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Social media icon inside popup */
+.sharePopup a img {
+  width: 16px;
+}
