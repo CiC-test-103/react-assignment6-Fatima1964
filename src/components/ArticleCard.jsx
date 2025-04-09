@@ -17,7 +17,7 @@ const ArticleCard = () => {
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.card}>
-        
+
         {/* Left image section */}
         <img
           src={articleImage}
@@ -63,9 +63,15 @@ const ArticleCard = () => {
             {isSharing && (
               <div className={styles.sharePopup}>
                 <span>SHARE</span>
-                <a href="#" aria-label="Share on Facebook"><img src={facebookIcon} alt="Facebook" /></a>
-                <a href="#" aria-label="Share on Twitter"><img src={twitterIcon} alt="Twitter" /></a>
-                <a href="#" aria-label="Share on Pinterest"><img src={pinterestIcon} alt="Pinterest" /></a>
+                <a href="#" aria-label="Share on Facebook">
+                  <img src={facebookIcon} alt="Facebook" />
+                </a>
+                <a href="#" aria-label="Share on Twitter">
+                  <img src={twitterIcon} alt="Twitter" />
+                </a>
+                <a href="#" aria-label="Share on Pinterest">
+                  <img src={pinterestIcon} alt="Pinterest" />
+                </a>
                 <div className={styles.shareArrow}></div>
               </div>
             )}

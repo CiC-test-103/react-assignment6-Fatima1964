@@ -1,56 +1,43 @@
 /** Variables Import **/
-@import url('/variables.css');    /* ✅ Correct relative path */
+@import url('/variables.css'); /* ✅ Correct relative path */
 
-
-/**
- * CSS Reset
- * Source: https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-/* 1. Use a more-intuitive box-sizing model */
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-/* 2. Remove default margin */
-* {
-  margin: 0;
-}
 body {
-  /* 3. Add accessible line-height */
+  background-color: var(--clr-lightGrayishBlue);
+  font-family: var(--ff-base);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+
+  /* Accessibility and rendering enhancements */
   line-height: 1.5;
-  /* 4. Improve text rendering */
   -webkit-font-smoothing: antialiased;
 }
-/* 5. Improve media defaults */
+
+/* Media elements: consistent styling */
 img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
-/* 6. Inherit fonts for form controls */
+
+/* Inherit font styles for form elements */
 input, button, textarea, select {
   font: inherit;
 }
-/* 7. Avoid text overflows */
+
+/* Prevent text overflow */
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
-/* 8. Improve line wrapping */
 
-/*
-  9. Create a root stacking context
-*/
+/* Root stacking context */
 #root, #__next {
   isolation: isolate;
 }
 
-/** Global CSS **/
-/* We recommend writing minimal component-specific CSS here */
-
-
-/** Attribution CSS **/
-.attribution { 
-  font-size: 13px; 
-  text-align: center; 
-}
-.attribution a { 
-  color: hsl(228, 45%, 44%); 
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
