@@ -1,0 +1,232 @@
+@import "../variables.css";
+
+.cardWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--clr-lightGrayishBlue);
+  padding: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  overflow: visible;
+}
+
+.card {
+  display: flex;
+  max-width: 730px;
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  overflow: visible;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  font-family: var(--ff-base);
+  z-index: 1;
+}
+
+.image {
+  width: 290px;
+  height: auto;
+  background: url("../images/drawers.jpg") left left/cover no-repeat;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  flex-shrink: 0;
+}
+
+.content {
+  flex: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+h2 {
+  font-size: 1.3rem;
+  color: var(--clr-veryDarkGrayishBlue);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+  font-weight: var(--fw-bold);
+}
+
+p {
+  color: var(--clr-grayishBlue);
+  font-size: var(--font-paragraph);
+  line-height: 1.6;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: visible;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 15px;
+  color: var(--clr-veryDarkGrayishBlue);
+}
+
+.shareButton {
+  background: var(--clr-lightGrayishBlue);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+/* Active state styling */
+.active {
+  background: var(--clr-veryDarkGrayishBlue);
+}
+
+.active img {
+  filter: brightness(0) invert(1);
+}
+
+.sharePopup {
+  position: absolute;
+  bottom: 70px;
+  right: -7rem;
+  background: var(--clr-veryDarkGrayishBlue);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 50px;
+  border-radius: 10px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  min-width: 240px;
+}
+
+.sharePopup span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--clr-grayishBlue);
+}
+
+.sharePopup a img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+  transition: transform 0.3s ease;
+}
+
+.sharePopup a img:hover {
+  transform: scale(1.2);
+}
+
+.shareArrow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid var(--clr-veryDarkGrayishBlue);
+}
+
+.active + .sharePopup .shareArrow {
+  border-top-color: var(--clr-veryDarkGrayishBlue);
+}
+/*==============================
+  Responsive Design (Mobile)
+==============================*/
+@media (max-width: 375px) {
+
+  /* Prevent clipping or cutoff of elements */
+  .cardWrapper, .card, .content, .footer {
+    overflow: visible;
+  }
+
+  .cardWrapper {
+    padding: 10px;
+    position: relative;
+  }
+
+  .card {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .footer {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .shareContainer {
+    position: static; 
+  }
+
+  /* Mobile popup styling */
+  .sharePopup {
+    position: fixed;
+    left: .5rem;
+    right: 0;
+    bottom: 1.5rem;
+    border-bottom: 5px;
+    width: 95%;
+    margin: 0;
+    padding: 16px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    z-index: 1000;
+    box-shadow: none;
+    border-radius: 0 0 10px 10px;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+
+  .shareButton::after {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: -1rem;
+    bottom: -2rem;
+  }
+
+  /* Fade in animation for popup */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.shareArrow {
+  display: none;
+}
+
+.sharePopup::after {
+  display: none;
+}
